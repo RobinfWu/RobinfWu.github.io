@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { source: 'JG_J1', target: 'JG_J2', id: 'e4' },
     ];
 
-   // Get container dimensions
+    // Get container dimensions
     const width = container.clientWidth;
     const height = container.clientHeight || 400;
 
@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .append('svg')
         .attr('width', width)
         .attr('height', height);
+
+    // Create zoomable group
+    const g = svg.append('g');
+
+    // Set up zoom behavior
+    const zoom = d3.zoom()
+        .scaleExtent([0.5, 2]) // Zoom limits: 0.5x to 2x
+        .on('zoom', (event) => {
+            g.attr('transform', event.transform);
+        });
+
+    svg.call(zoom);
 
     // Initial node positions (approximate vertical layout)
     nodes.forEach((node, i) => {
@@ -46,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .alphaDecay(0.05);
 
     // Draw edges
-    const link = svg.append('g')
+    const link = g.append('g')
         .selectAll('line')
         .data(links)
         .enter()
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .attr('class', 'link');
 
     // Draw nodes
-    const node = svg.append('g')
+    const node = g.append('g')
         .selectAll('.node')
         .data(nodes)
         .enter()
