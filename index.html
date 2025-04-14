@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chen Family Taijiquan (Gongfu Jia) - Jin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Chen Family Taijiquan (Gongfu Jia) - Jin Dashboard</h1>
+    </header>
+    <div class="dashboard-container">
+        <aside class="graph-panel">
+            <h2>Form Sequence (Jin Graph)</h2>
+            <div id="jin-graph"></div>
+            <p class="graph-note">Click on a Jin node above to view details.</p>
+        </aside>
+        <main class="content-panel">
+            <iframe id="content-frame" src="about:blank" title="Jin Content Display">
+                <p>Select a Jin from the graph on the left to view its details here.</p>
+            </iframe>
+        </main>
+    </div>
+
+    <footer>
+        <p>Gongfu Jia Lineage</p>
+    </footer>
+
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
